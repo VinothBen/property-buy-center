@@ -117,16 +117,7 @@ class ComponentsDemo extends React.Component {
             }
         ];
         return(<div>
-            <h2>FIlter Model 1</h2>
-            <div>
-                <FilterModel 
-                    selectedIndex={this.state.selected} 
-                    onClickCallBackNavButton={this.onClickCallBack}
-                    filterOptions={["Home","Hello","Hello","Hai!","Hello!"]}
-                    propertyDetails={propsValue}
-                    onClickTilesCallBack={this.onClickTilesCallBack}
-                    />
-            </div>
+           
              <h2>Tiles Model 1</h2>
                 <div>
                 <TilesModel1 
@@ -145,6 +136,16 @@ class ComponentsDemo extends React.Component {
                     contents={content}
                     onClickCallBack={this.onClickTilesCallBack}
                     onClickCurrencyChanges={this.onClickCallBack}
+                    />
+            </div>
+            <h2>FIlter Model 1</h2>
+            <div>
+                <FilterModel 
+                    selectedIndex={this.state.selected} 
+                    onClickCallBackNavButton={this.onClickCallBack}
+                    filterOptions={["Home","Hello","Hello","Hai!","Hello!"]}
+                    propertyDetails={propsValue}
+                    onClickTilesCallBack={this.onClickTilesCallBack}
                     />
             </div>
             </div>);

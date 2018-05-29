@@ -162,17 +162,23 @@ class FilterModel extends React.Component{
     render(){
         return (
         <div>
-               <Row>
-                   {this.getFilterOptions(this.props.filterOptions)}
-               </Row>
-               <Row style={{width: "70%"}}>
-                   {this.getPropertyDetails(this.props.propertyDetails)}
-                </Row>
-               <div style={{position:"absolute",left:"35%",top:"450px"}}><div style={this.scrollButton}>
+               <div>
+                   <Row>
+                      {this.getFilterOptions(this.props.filterOptions)}
+                    </Row>
+                </div>
+                <div style={{display: "inline-block",width: "70%",height: "400px",}}>
+                    <Row>
+                        {this.getPropertyDetails(this.props.propertyDetails)}
+                        </Row>
+                </div>
+               <div style={{position:"relative",left:"35%",bottom:"20px"}}><div style={this.scrollButton}>
                <span style={this.leftScrollButton === 0?{color: "#c9c9c9",top: "7px"}:{top: "7px"}} className="glyphicon glyphicon-menu-left" onClick={this.leftScrollButton !== 0?()=>this.onClickScrollButton("left"):null}></span>
                </div><div style={this.scrollButton}>
                <span style={this.rightScrollButton === 0?{color: "#c9c9c9",top: "7px"}:{top: "7px"}} className="glyphicon glyphicon-menu-right" onClick={this.rightScrollButton !== 0?()=>this.onClickScrollButton("right"):null}></span>
-               </div></div>
+               </div>
+               <br/>
+               </div>
         </div>);
     }
 }

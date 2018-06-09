@@ -11,8 +11,7 @@ const config = {
     vendor: ['semantic-ui-react']
   },
   output: {
-    path: commonPaths.outputPath,
-    publicPath: '/'
+    path: commonPaths.outputPath
   },
   module: {
     rules: [

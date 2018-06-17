@@ -34,7 +34,7 @@ class LandingPage extends React.Component {
         let dropDownItems = [];
         if (!_.isEmpty(options)) {
             options.map((value, index) => {
-                dropDownItems.push(<MenuItem eventKey={index}>{value}</MenuItem>);
+                dropDownItems.push(<MenuItem key={index}>{value}</MenuItem>);
             });
         }
         return dropDownItems;
@@ -60,22 +60,22 @@ class LandingPage extends React.Component {
                     </DropdownButton>
                     <DropdownButton
                         title={"Chennai"}
-                        key={"search-location"}
-                        id={"search-location"}
+                        key={"search-type"}
+                        id={"search-type"}
                     >
                         {this.getDropDowns(options)}
                     </DropdownButton>
                     <DropdownButton
                         title={"Chennai"}
-                        key={"search-locatio"}
-                        id={"search-locatio"}
+                        key={"search-price"}
+                        id={"search-price"}
                     >
                         {this.getDropDowns(options)}
                     </DropdownButton>
                     <DropdownButton
                         title={"Chennai"}
-                        key={"search-locati"}
-                        id={"search-locati"}
+                        key={"search-bhk"}
+                        id={"search-bhk"}
                     >
                         {this.getDropDowns(options)}
                     </DropdownButton>

@@ -1,9 +1,5 @@
 import React from "react";
 import _ from "lodash";
-import { Carousel, Button, ButtonToolbar, DropdownButton, MenuItem } from "react-bootstrap";
-import SlideImage1 from "../../Images/SlideImage1.jpg";
-import SlideImage2 from "../../Images/SlideImage2.jpg";
-import SlideImage3 from "../../Images/SlideImage3.jpg";
 import {hashHistory} from "react-router";
 
 class LandingPage extends React.Component {
@@ -15,15 +11,24 @@ class LandingPage extends React.Component {
         }
     }
     componentWillMount() {
-        this.props.actions.landingPageActionCheck("Hello!!");
+        // this.props.actions.landingPageActionCheck("Hello!!");
+        if(!_.isEmpty(this.props.routes) && this.props.routes[1].path){
+            for(let i=0;i<this.state.navOptions.length;i++){
+                let routingValue ="/" + this.state.navOptions[i].replace(/\s+/g, '-').toLocaleLowerCase();
+                if(routingValue === this.props.routes[1].path){
+                    this.setState({activeIndex: i.toString()});
+                    break;
+                }
+            }
+        }
+      
     }
-    componentWillReceiveProps(nextProps){
-        console.log("..nextProps", nextProps);
-    }
+    // componentWillReceiveProps(nextProps){
+    //     console.log("..nextProps", nextProps);
+    // }
     onClickNavMenu = (e) => {
         this.setState({ activeIndex: e.target.id });
         let routingValue ="/" + this.state.navOptions[parseInt(e.target.id)].replace(/\s+/g, '-').toLocaleLowerCase();
-        console.log("...routePath", routingValue);
         hashHistory.push(routingValue.toString());
     }
     getNavigationMenu = (values) => {
@@ -38,21 +43,6 @@ class LandingPage extends React.Component {
         }
         return comp;
     }
-    getDropDowns = (options) => {
-        let dropDownItems = [];
-        if (!_.isEmpty(options)) {
-            options.map((value, index) => {
-                dropDownItems.push(<MenuItem key={index}>{value}</MenuItem>);
-            });
-        }
-        return dropDownItems;
-    }
-    getSearchDetails = ()=>{
-        if(!_.isEmpty(this.props.searchData)){
-          let comp = [];
-            console.log("...SD", this.props.searchData);
-        }
-    }
     render() {
         const options = ['Chennai', 'Bangalore', 'Andhra'];
         return (< div className="landing-page-container">
@@ -62,54 +52,7 @@ class LandingPage extends React.Component {
                     {this.getNavigationMenu(this.state.navOptions)}
                 </ul>
             </div>
-            <div className="searchFilterDiv">
-                <h2 className="searchFilterHeader">FIND YOUR DREAM HOME</h2>
-                <ButtonToolbar>
-                    <DropdownButton
-                        title={"Chennai"}
-                        key={"search-location"}
-                        id={"search-location"}
-                    >
-                        {this.getDropDowns(options)}
-                    </DropdownButton>
-                    <DropdownButton
-                        title={"Chennai"}
-                        key={"search-type"}
-                        id={"search-type"}
-                    >
-                        {this.getDropDowns(options)}
-                    </DropdownButton>
-                    <DropdownButton
-                        title={"Chennai"}
-                        key={"search-price"}
-                        id={"search-price"}
-                    >
-                        {this.getDropDowns(options)}
-                    </DropdownButton>
-                    <DropdownButton
-                        title={"Chennai"}
-                        key={"search-bhk"}
-                        id={"search-bhk"}
-                    >
-                        {this.getDropDowns(options)}
-                    </DropdownButton>
-                </ButtonToolbar>
-                <Button bsStyle="warning">SEARCH</Button>
-            </div>
-            <div className="slideBar">
-                <Carousel interval={2000} pauseOnHover={false}>
-                    <Carousel.Item>
-                        <img width={1370} height={400} alt="900x500" src={SlideImage1} />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={1370} height={400} alt="900x500" src={SlideImage2} />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={1370} height={400} alt="900x500" src={SlideImage3} />
-                    </Carousel.Item>
-                </Carousel>;
-                    </div>
-                    {()=>this.getSearchDetails()}
+            {this.props.children}
         </div>);
     }
 }

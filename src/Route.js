@@ -6,19 +6,25 @@ import { syncHistoryWithStore } from "react-router-redux";
 import LandingPage from "../src/Application/LandingPage/LandingPage.Container";
 import ComponentsDemo from "../src/Components/ComponentsDemo";
 import WireFramePage from "../src/Application/WireFramePage/WireFramePage.container";
+import EmptyPage from "../src/Application/EmptyPage";
 
 const history = syncHistoryWithStore(hashHistory, Store);
+const ppsPage = <EmptyPage name="Properties"/>;
 
 export const routeComponents = (
     <Router history={history} basename={process.env.REACT_APP_ROUTER_BASE || ''}>
         < Route path="/" component={LandingPage} >
-            {/*<IndexRoute component={LandingPage}/>
-            <Route exact path="/home" component={}></Route>
-            <Route exact path="/properties" component={}></Route>
-            <Route exact path="/topdevelopers" component={}></Route>
-            <Route exact path="/happycustomers" component={}></Route>
-            <Route exact path="/contactus" component={}></Route> */}
+            {/* <IndexRoute component={LandingPage}/> */}
+            {/* <Route  exact path="/properties" component={EmptyPage}></Route> */}
+            {/* <Route  path="/properties" component={}></Route>
+            <Route  path="/topdevelopers" component={}></Route>
+            <Route  path="/happycustomers" component={}></Route>
+            <Route  path="/contactus" component={}></Route> */}
         </Route >
+        <Route  exact path="/properties" component={EmptyPage}></Route>
+        <Route  exact path="/top-developers" component={EmptyPage}></Route>
+        <Route  exact path="/happy-customers" component={EmptyPage}></Route>
+        <Route  exact path="/properties" component={EmptyPage}></Route>
         <Route path="/components" component={ComponentsDemo}></Route>
         <Route path="/wireframe" component={WireFramePage}></Route>
     </Router>

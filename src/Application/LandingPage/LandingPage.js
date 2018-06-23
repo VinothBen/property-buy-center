@@ -4,19 +4,27 @@ import { Carousel, Button, ButtonToolbar, DropdownButton, MenuItem } from "react
 import SlideImage1 from "../../Images/SlideImage1.jpg";
 import SlideImage2 from "../../Images/SlideImage2.jpg";
 import SlideImage3 from "../../Images/SlideImage3.jpg";
+import {hashHistory} from "react-router";
 
 class LandingPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeIndex: "0"
+            activeIndex: "0",
+            navOptions: ["HOME", "PROPERTIES", "TOP DEVELOPERS", "HAPPY CUSTOMERS", "CONTACT US"]
         }
     }
     componentWillMount() {
         this.props.actions.landingPageActionCheck("Hello!!");
     }
+    componentWillReceiveProps(nextProps){
+        console.log("..nextProps", nextProps);
+    }
     onClickNavMenu = (e) => {
         this.setState({ activeIndex: e.target.id });
+        let routingValue ="/" + this.state.navOptions[parseInt(e.target.id)].replace(/\s+/g, '-').toLocaleLowerCase();
+        console.log("...routePath", routingValue);
+        hashHistory.push(routingValue.toString());
     }
     getNavigationMenu = (values) => {
         let comp = [];
@@ -39,13 +47,19 @@ class LandingPage extends React.Component {
         }
         return dropDownItems;
     }
+    getSearchDetails = ()=>{
+        if(!_.isEmpty(this.props.searchData)){
+          let comp = [];
+            console.log("...SD", this.props.searchData);
+        }
+    }
     render() {
         const options = ['Chennai', 'Bangalore', 'Andhra'];
         return (< div className="landing-page-container">
             <div className="navigation-bar">
                 <div className="header-text"><span className="first">REAL&nbsp;</span><span className="second">  ESTATE</span></div>
                 <ul onClick={this.onClickNavMenu}>
-                    {this.getNavigationMenu(["HOME", "PROPERTIES", "TOP DEVELOPERS", "HAPPY CUSTOMERS", "CONTACT US"])}
+                    {this.getNavigationMenu(this.state.navOptions)}
                 </ul>
             </div>
             <div className="searchFilterDiv">
@@ -95,6 +109,7 @@ class LandingPage extends React.Component {
                     </Carousel.Item>
                 </Carousel>;
                     </div>
+                    {()=>this.getSearchDetails()}
         </div>);
     }
 }

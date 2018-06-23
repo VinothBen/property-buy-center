@@ -1,3 +1,5 @@
+install npm/yarn and node 
+install eslint plugin in VS Code
 Script Commands: 
  npm install --- Download all packages form npm repositry
  npm start --- This command will be used for development (inbuild react 16.0 webpack config)

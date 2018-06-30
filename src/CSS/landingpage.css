@@ -14,7 +14,7 @@
     list-style-type: none; 
     display: -webkit-inline-box;
     float: right;
-    margin-right: 100px;
+    margin-right: 50px;
     position: relative;
     top: 20px;
 }
@@ -34,7 +34,7 @@
     position: relative;
     float: left;
     top: 10px;
-    left: 100px;
+    left: 50px;
     color: #425794;
     font-size: 30px;
 
@@ -52,8 +52,8 @@
     display: none;
 }
 .slideBar {
-    position: absolute;
-    top: 60px;
+    position: relative;
+    top: -400px;
 }
 .searchFilterDiv {
     z-index: 10;

@@ -27,9 +27,12 @@ class LandingPage extends React.Component {
     //     console.log("..nextProps", nextProps);
     // }
     onClickNavMenu = (e) => {
-        this.setState({ activeIndex: e.target.id });
-        let routingValue ="/" + this.state.navOptions[parseInt(e.target.id)].replace(/\s+/g, '-').toLocaleLowerCase();
-        hashHistory.push(routingValue.toString());
+        if(e.target.id){
+            this.setState({ activeIndex: e.target.id });
+            let routingValue ="/" + this.state.navOptions[parseInt(e.target.id)].replace(/\s+/g, '-').toLocaleLowerCase();
+            hashHistory.push(routingValue.toString());
+        }
+       
     }
     getNavigationMenu = (values) => {
         let comp = [];

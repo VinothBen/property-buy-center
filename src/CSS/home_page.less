@@ -1,0 +1,49 @@
+.landing-page-container {
+    .searchFilterDiv {
+        .budget-range {
+            position: relative;
+            width: inherit;
+            height: inherit;
+            .min-value {
+                float: left;
+                margin-left: 50px;
+                margin-top: -5px;
+                ul{
+                    list-style-type: none;
+                    padding-left: 5px;
+                    display: block;
+                    max-height: 50px;/*To add scroller*/
+                    overflow-y:auto;/*To add scroller*/
+                    overflow-x:hidden;/*To add scroller*/
+                    z-index: 9999;
+                   li{
+                       cursor: pointer;
+                   } 
+                   li:hover{
+                       color: orange;
+                   }
+                }
+            }
+            .max-value {
+                float: right;
+                margin-right: 50px;
+                margin-top: -5px;
+                ul{
+                    list-style-type: none;
+                    padding-left: 5px;
+                    display: block;
+                    max-height: 50px;/*To add scroller*/
+                    overflow-y:auto;/*To add scroller*/
+                    overflow-x:hidden;/*To add scroller*/
+                    z-index: 9999;
+                    li{
+                        cursor: pointer;
+                    }
+                    li:hover{
+                        color: orange;
+                    }
+                }
+            }
+        }
+    }
+}

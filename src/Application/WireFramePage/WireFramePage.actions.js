@@ -1,6 +1,5 @@
 import WireFrmaePageConstatns from "./WireFramePage.constants";
-// import {fetchUrl} from "fetch";
-import axios from "axios";
+// import axios from "axios";
 // import LocalDB from "../../LocalDB"
 export const getBuilderSearchDetailsSuccess = (data) => {
     return {
@@ -18,12 +17,25 @@ export const getBuilderSearchDetailsFailure = () => {
 export const getBuilderSearchDetails = (url) => {
     return (dispatch) => {
         url = decodeURIComponent(url);
-        axios.get(url)
+        // axios.get(url)
+        //     .then((response) => {
+        //             dispatch(getBuilderSearchDetailsSuccess(response.data));
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+        fetch(url)
             .then((response) => {
-                    dispatch(getBuilderSearchDetailsSuccess(response.data));
+                if (response.status >= 400) {
+                    throw new Error("Bad Response From Server!");
+                } else {
+                    return response.json();
+                }
             })
-            .catch((error) => {
-                console.log(error);
-            });
+            .then(
+                function (json) {
+                    dispatch(getBuilderSearchDetailsSuccess(json));
+                }
+            )
     }
 }

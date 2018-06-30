@@ -8,6 +8,8 @@ import HomePage from "../src/Application/HomePage/HomePage.Container";
 import ComponentsDemo from "../src/Components/ComponentsDemo";
 import WireFramePage from "../src/Application/WireFramePage/WireFramePage.container";
 import EmptyPage from "../src/Application/EmptyPage";
+import SearchPage from "../src/Application/SearchDetailsPage/SearchDetailsPage";
+
 
 const history = syncHistoryWithStore(hashHistory, Store);
 const ppsPage = <EmptyPage name="Properties"/>;
@@ -17,7 +19,7 @@ export const routeComponents = (
         < Route path="/" component={LandingPage} >
             <IndexRoute component={HomePage}/>
             <Route path="/home" component={HomePage}></Route>
-            <Route path="/properties" component={EmptyPage}></Route>
+            <Route path="/properties" component={SearchPage}></Route>
             <Route path="/top-developers" component={EmptyPage}></Route>
             <Route path="/happy-customers" component={EmptyPage}></Route>
             <Route path="/properties" component={EmptyPage}></Route>

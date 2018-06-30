@@ -6,7 +6,7 @@ export default connect(
     (state)=>{
        return {
                 data: state.homePageReducer.data,
-                searchData: state.wireFramePageReducer.searchData
+                searchData: state.homePageReducer.searchData
               };
 },
     (dispatch)=>{

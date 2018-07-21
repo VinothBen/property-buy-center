@@ -15,10 +15,6 @@ class SearchDetailsPage extends Component {
         this.state = {
 
         };
-        this.pieChartValue = {
-            y1: 50,
-            y2: 50
-        };
     }
     handle = (props) => {
         const { value, dragging, index, ...restProps } = props;
